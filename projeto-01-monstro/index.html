@@ -35,9 +35,16 @@
         <div v-if="hasResult" class="panel result">
             <div v-if="win" class="win">Você ganhou!!! :)</div>
             <div v-if="lose" class="lose">Você perdeu! :(</div>
-            <div class="draw">Ambos não resistiram no campo de balha.</div>
         </div>
-        <div class="panel buttons"></div>
+        <div class="panel buttons">
+            <template v-if="running">
+                <button @click="attack" class="btn attack">Ataque</button>
+                <button @click="attack(true)" class="btn especial-attack">Ataque Especial</button>
+                <button class="btn heal">Curar</button>
+                <button @click="stop" class="btn give-up">Desistir</button>
+            </template>
+            <button v-else @click="run" class="btn new-game">Iniciar jogo</button>
+        </div>
         <div class="panel logs"></div>
     </div>
     <script src="app.js"></script>
